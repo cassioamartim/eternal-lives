@@ -1,10 +1,8 @@
 package br.martim.dev;
 
-import br.martim.dev.command.LivesCommand;
-import br.martim.dev.controller.ShopController;
-import br.martim.dev.controller.UserController;
-import br.martim.dev.listener.MenuListener;
-import br.martim.dev.listener.UserListener;
+import br.martim.dev.command.*;
+import br.martim.dev.controller.*;
+import br.martim.dev.listener.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dev.jorel.commandapi.CommandAPI;
@@ -13,8 +11,6 @@ import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Eternal extends JavaPlugin {
-
-    public static final String HEART_SYMBOL = "❤";
 
     @Getter
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -63,5 +59,6 @@ public class Eternal extends JavaPlugin {
 
     protected void handleCommands() {
         new LivesCommand().handle(this);
+        new LifeShopCommand().handle(this);
     }
 }

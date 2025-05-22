@@ -176,22 +176,6 @@ public abstract class Menu {
         holder.setItem(slot, Item.of(Material.AIR));
     }
 
-    public void move(int from, int to) {
-
-        Item item = contents.get(from);
-
-        if (item == null) return;
-
-        contents.remove(from);
-        contents.put(to, item);
-
-        holder.remove(item);
-
-        holder.setItem(to, item);
-
-        player.updateInventory();
-    }
-
     public <T> void page(List<T> list, int lastPageSlot, int nextPageSlot, int initialSlot, ItemPageBuilder<T> itemPageBuilder) {
         setTotalPages((list.size() + maxItems - 1) / maxItems);
         addBorderPage(lastPageSlot, nextPageSlot);
@@ -220,6 +204,45 @@ public abstract class Menu {
 
     public <T> void page(List<T> list, int initialSlot, ItemPageBuilder<T> itemPageBuilder) {
         page(list, getTotalSlots() - 6, getTotalSlots() - 4, initialSlot, itemPageBuilder);
+    }
+
+    private static final int[] CENTER_SLOTS = {
+            12, 13, 14,
+            21, 22, 23,
+            30, 31, 32
+    };
+
+    public <T> void pageCentered(List<T> list,
+                                 ItemPageBuilder<T> itemPageBuilder) {
+        pageCentered(list, getTotalSlots() - 6, getTotalSlots() - 4, pageNumber, itemPageBuilder);
+    }
+
+    public <T> void pageCentered(List<T> list,
+                                 int lastPageSlot,
+                                 int nextPageSlot,
+                                 int pageNumber,
+                                 ItemPageBuilder<T> itemPageBuilder) {
+
+        final int maxItems   = CENTER_SLOTS.length;            // 9
+        final int totalPages = (list.size() + maxItems - 1) / maxItems;
+
+        setTotalPages(totalPages);
+
+        // navegação e título
+        addBorderPage(lastPageSlot, nextPageSlot);
+
+        if (totalPages > 1 && showTitlePage)
+            setTitle(initialTitle + " (" + pageNumber + "/" + totalPages + ")");
+
+        // coloca os itens
+        for (int i = 0; i < maxItems; i++) {
+            int indexNaLista = maxItems * (pageNumber - 1) + i;
+            if (indexNaLista >= list.size()) break;
+
+            T item = list.get(indexNaLista);
+            if (item != null)
+                itemPageBuilder.accept(item, CENTER_SLOTS[i]);
+        }
     }
 
     public void addBorderPage() {

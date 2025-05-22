@@ -5,7 +5,7 @@
       {
         "name": "Strength I",
         "type": "STRENGTH",
-        "icon": "BLAZE_POWDER",
+        "icon": "NETHERITE_CHESTPLATE",
         "necessary-life": 3
       },
       {
@@ -18,7 +18,77 @@
         "name": "Fire Resistance I",
         "type": "FIRE_RESISTANCE",
         "icon": "BLAZE_POWDER",
+        "necessary-life": 3
+      },
+      {
+        "name": "Health Boost I",
+        "type": "HEALTH_BOOST",
+        "icon": "MACE",
+        "necessary-life": 2
+      },
+      {
+        "name": "Hero of the Village II",
+        "type": "HERO_OF_THE_VILLAGE",
+        "icon": "DIAMOND_SWORD",
+        "amplifier": 1,
+        "necessary-life": 2
+      },
+      {
+        "name": "Haste I",
+        "type": "HASTE",
+        "icon": "GOLDEN_PICKAXE",
+        "necessary-life": 2
+      },
+      {
+        "name": "Jump Boost I",
+        "type": "JUMP_BOOST",
+        "icon": "TOTEM_OF_UNDYING",
+        "necessary-life": 2
+      },
+      {
+        "name": "Trial Omen I",
+        "type": "TRIAL_OMEN",
+        "icon": "COAL",
+        "necessary-life": 2
+      },
+      {
+        "name": "Water Breathing I",
+        "type": "WATER_BREATHING",
+        "icon": "ICE",
         "necessary-life": 1
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "effects": [
+      {
+        "name": "Speed II",
+        "type": "SPEED",
+        "icon": "IRON_BOOTS",
+        "amplifier": 1,
+        "necessary-life": 5
+      },
+      {
+        "name": "Health Boost II",
+        "type": "HEALTH_BOOST",
+        "icon": "JUKEBOX",
+        "amplifier": 1,
+        "necessary-life": 4
+      },
+      {
+        "name": "Hero of the Village IV",
+        "type": "HERO_OF_THE_VILLAGE",
+        "icon": "DIAMOND_SWORD",
+        "amplifier": 3,
+        "necessary-life": 4
+      },
+      {
+        "name": "Haste II",
+        "type": "HASTE",
+        "icon": "GOLDEN_PICKAXE",
+        "amplifier": 1,
+        "necessary-life": 4
       }
     ]
   }

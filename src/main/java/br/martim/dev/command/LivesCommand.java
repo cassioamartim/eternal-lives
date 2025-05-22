@@ -1,8 +1,10 @@
 package br.martim.dev.command;
 
 import br.martim.dev.Eternal;
+import br.martim.dev.api.config.ConfigAPI;
 import br.martim.dev.api.user.User;
 import dev.jorel.commandapi.CommandAPICommand;
+import dev.jorel.commandapi.CommandPermission;
 import dev.jorel.commandapi.arguments.IntegerArgument;
 import dev.jorel.commandapi.arguments.PlayerArgument;
 import org.bukkit.entity.Player;
@@ -10,12 +12,24 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
 
+import static br.martim.dev.api.config.ConfigAPI.getMessage;
+
 public class LivesCommand {
 
     public void handle(JavaPlugin plugin) {
 
         new CommandAPICommand("lives")
-                .withoutPermission("lives.admin")
+                .withPermission(CommandPermission.OP)
+                .withPermission("lives.admin")
+                .withSubcommand(
+                        new CommandAPICommand("reload")
+                                .executes((sender, args) -> {
+
+                                    ConfigAPI.reload();
+
+                                    sender.sendMessage("§aThe plugin was successfully restarted.");
+                                })
+                )
                 .withSubcommand(
                         new CommandAPICommand("set")
                                 .withArguments(
@@ -33,12 +47,14 @@ public class LivesCommand {
                                     user.save();
 
                                     target.sendMessage(
-                                            "§aYour lives have been set to §c%s".formatted(amount + Eternal.HEART_SYMBOL)
+                                            getMessage("lives-command-set-in-target")
+                                                    .replace("{life}", amount + ConfigAPI.getHeartSymbol())
                                     );
 
                                     sender.sendMessage(
-                                            "§aYou changed the life of the player %s to §c%s"
-                                                    .formatted(target.getName(), amount + Eternal.HEART_SYMBOL)
+                                            getMessage("lives-command-set-sender")
+                                                    .replace("{player}", target.getName())
+                                                    .replace("{life}", amount + ConfigAPI.getHeartSymbol())
                                     );
                                 })
                 )
@@ -59,10 +75,15 @@ public class LivesCommand {
                                     user.save();
 
                                     target.sendMessage(
-                                            "§aYour life has increased in §c+%s".formatted(amount + Eternal.HEART_SYMBOL)
+                                            getMessage("lives-command-add-in-target")
+                                                    .replace("{life}", amount + ConfigAPI.getHeartSymbol())
                                     );
 
-                                    sender.sendMessage("§aYou gave §c+%s§a lives to §e%s".formatted(amount + Eternal.HEART_SYMBOL, target.getName()));
+                                    sender.sendMessage(
+                                            getMessage("lives-command-add-sender")
+                                                    .replace("{player}", target.getName())
+                                                    .replace("{life}", amount + ConfigAPI.getHeartSymbol())
+                                    );
                                 })
                 )
                 .withSubcommand(
@@ -84,12 +105,14 @@ public class LivesCommand {
                                     user.save();
 
                                     target.sendMessage(
-                                            "§aYour life diminished in §c-%s".formatted(newLives + Eternal.HEART_SYMBOL)
+                                            getMessage("lives-command-remove-in-target")
+                                                    .replace("{life}", amount + ConfigAPI.getHeartSymbol())
                                     );
 
                                     sender.sendMessage(
-                                            "§aYou decreased the player's life %s to §c%s"
-                                                    .formatted(target.getName(), newLives + Eternal.HEART_SYMBOL)
+                                            getMessage("lives-command-remove-sender")
+                                                    .replace("{player}", target.getName())
+                                                    .replace("{life}", amount + ConfigAPI.getHeartSymbol())
                                     );
                                 })
                 )

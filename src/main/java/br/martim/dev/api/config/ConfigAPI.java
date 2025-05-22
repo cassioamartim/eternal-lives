@@ -15,6 +15,9 @@ public class ConfigAPI {
 
     public static void reload() {
         Eternal.getPlugin(Eternal.class).reloadConfig();
+
+        Eternal.getShopController().handle();
+
     }
 
     public static int getBannedDays() {
@@ -55,5 +58,19 @@ public class ConfigAPI {
 
     public static int getDiedLife() {
         return config().getInt("died-life", 1);
+    }
+
+    public static String getHeartSymbol() {
+        return config().getString("heart-symbol", "❤");
+    }
+
+    public static String getTabSuffix() {
+        return Util.color(config().getString("tab-suffix", "&c{life}&4{heart}"));
+    }
+
+    public static String getMessage(String key) {
+        if (!config().contains("messages." + key.toLowerCase())) return "";
+
+        return Util.color(config().getString("messages." + key.toLowerCase()));
     }
 }

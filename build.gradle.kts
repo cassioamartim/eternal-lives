@@ -35,7 +35,20 @@ bukkit {
     main = "br.martim.dev.Eternal"
     author = "Cássio Martim"
     version = project.version as String
-    apiVersion = "1.21.3"
+    apiVersion = "1.20"
+}
+
+tasks.register<Copy>("copyJar") {
+    dependsOn(tasks.shadowJar) // Garante que o jar esteja construído
+
+    val outputJar = tasks.shadowJar.get().archiveFile.get().asFile
+
+    from(outputJar)
+    into("server/plugins")
+
+    doLast {
+        println("Copiado com sucesso para server/plugins: ${outputJar.name}")
+    }
 }
 
 tasks.shadowJar {

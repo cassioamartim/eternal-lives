@@ -7,9 +7,16 @@
   },
   "minecraft:adventure/adventuring_time": {
     "criteria": {
+      "minecraft:old_growth_pine_taiga": "2025-05-22 04:18:48 -0300",
       "minecraft:taiga": "2025-05-22 01:10:45 -0300"
     },
     "done": false
+  },
+  "minecraft:adventure/root": {
+    "criteria": {
+      "killed_by_something": "2025-05-22 05:24:09 -0300"
+    },
+    "done": true
   },
   "DataVersion": 4082
 }

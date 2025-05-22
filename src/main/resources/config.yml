@@ -1,6 +1,12 @@
 # Plugin Settings
 # Developed by Cássio Martim
 
+# This is the heart symbol that appears in most messages and menus.
+heart-symbol: '❤'
+
+# This is a suffix that appears after the player's name on the tab and on his head.
+tab-suffix: '&c{life}&4{heart}' # Example: 14❤
+
 # When a player loses all their lives, they are banned for X days.
 # You can change the number of days below.
 banned-days: 10 # 10 days
@@ -30,3 +36,17 @@ kill-life: 1 # Gains 1 life per kill
 
 # When dying, a player loses X lives.
 died-life: 1 # Loses 1 life per death
+
+# These are the messages that appear in menus, deaths of players and commands.
+messages:
+  applied-effect-target: "&aEffect &b{effect}&a has been applied to you."
+  you-cant-buy-effects: "&cYou can't buy effects."
+  you-cant-buy-effect-data: "&cYou don't have enough lives to buy effect."
+  bought-effect: "&aYou have bought the &e{effect}&a effect by &c{lives}&a."
+  player-receiving-life: "&aYou received &c{life}&a for killing the player &e{player}"
+  lives-command-set-in-target: "&aYour lives have been set to &c{life}"
+  lives-command-set-sender: "&aYou changed the life of the player {player} to §c{life}"
+  lives-command-add-in-target: "&aYour life has increased in &c{life}"
+  lives-command-add-sender: "&aYou gave §c+{life}§a lives to §e{player}"
+  lives-command-remove-in-target: "&aYour life diminished in §c{life}"
+  lives-command-remove-sender: "&aYou decreased the player's life {player} to §c{life}"
