@@ -1,0 +1,25 @@
+[
+  {
+    "id": 1,
+    "effects": [
+      {
+        "name": "Strength I",
+        "type": "STRENGTH",
+        "icon": "BLAZE_POWDER",
+        "necessary-life": 3
+      },
+      {
+        "name": "Speed I",
+        "type": "SPEED",
+        "icon": "IRON_SWORD",
+        "necessary-life": 3
+      },
+      {
+        "name": "Fire Resistance I",
+        "type": "FIRE_RESISTANCE",
+        "icon": "BLAZE_POWDER",
+        "necessary-life": 1
+      }
+    ]
+  }
+]

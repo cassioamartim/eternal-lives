@@ -1,0 +1,32 @@
+# Plugin Settings
+# Developed by Cássio Martim
+
+# When a player loses all their lives, they are banned for X days.
+# You can change the number of days below.
+banned-days: 10 # 10 days
+
+# When a banned player tries to join the server, this message will be shown.
+# Placeholder: {date} - Displays the date when the ban will be lifted.
+banned-kick-message:
+  - '&cYou no longer have any lives!'
+  - '&cYour ban expires on: {date}'
+
+# When a player returns from a ban, they will receive a specific number of lives (not the initial value).
+# You can configure the number below.
+life-upon-banishment: 3 # Will receive 3 lives after returning from a ban
+
+# When a player returns from a ban, a message will be sent to them.
+# You can use this to warn that they now have X lives.
+# To disable this message, leave the section empty.
+# Placeholder: {lives} - Shows the number of lives the player will have (from 'life-upon-banishment').
+message-upon-banishment:
+  - '&cYou have returned from a ban! You now have {lives} lives.'
+
+# When a player joins for the first time, they will receive this initial number of lives.
+initial-life: 10 # 10 lives
+
+# When killing another player, the killer gains X lives.
+kill-life: 1 # Gains 1 life per kill
+
+# When dying, a player loses X lives.
+died-life: 1 # Loses 1 life per death
