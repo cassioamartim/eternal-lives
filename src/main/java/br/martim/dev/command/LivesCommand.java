@@ -20,7 +20,7 @@ public class LivesCommand {
 
         new CommandAPICommand("lives")
                 .withPermission(CommandPermission.OP)
-                .withPermission("lives.admin")
+                .withPermission("eternallivees.admin")
                 .withSubcommand(
                         new CommandAPICommand("reload")
                                 .executes((sender, args) -> {
@@ -40,6 +40,14 @@ public class LivesCommand {
                                     Player target = Objects.requireNonNull((Player) args.get(0), "Player is null");
 
                                     Integer amount = Objects.requireNonNull((Integer) args.get(1), "Amount is null");
+
+                                    if (amount >= ConfigAPI.getMaxLife()) {
+                                        sender.sendMessage(
+                                                getMessage("max-life-reached")
+                                                        .replace("{player}", target.getName())
+                                        );
+                                        return;
+                                    }
 
                                     User user = Eternal.getUserController().load(target.getUniqueId());
 
@@ -67,12 +75,24 @@ public class LivesCommand {
                                 .executes((sender, args) -> {
                                     Player target = Objects.requireNonNull((Player) args.get(0), "Player is null");
 
-                                    Integer amount = Objects.requireNonNull((Integer) args.get(1), "Amount is null");
+                                    int amount = Objects.requireNonNull((Integer) args.get(1), "Amount is null");
 
                                     User user = Eternal.getUserController().load(target.getUniqueId());
 
-                                    user.setLives(user.getLives() + amount);
+                                    int newLives = Math.min(ConfigAPI.getMaxLife(), user.getLives() + amount);
+
+                                    if (user.getLives() >= ConfigAPI.getMaxLife()) {
+                                        sender.sendMessage(
+                                                getMessage("max-life-reached")
+                                                        .replace("{player}", target.getName())
+                                        );
+                                        return;
+                                    }
+
+                                    user.setLives(newLives);
                                     user.save();
+
+                                    amount = Math.min(amount, ConfigAPI.getMaxLife());
 
                                     target.sendMessage(
                                             getMessage("lives-command-add-in-target")

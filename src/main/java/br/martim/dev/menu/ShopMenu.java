@@ -9,6 +9,7 @@ import br.martim.dev.api.shop.Shop;
 import br.martim.dev.api.shop.effect.EffectData;
 import br.martim.dev.api.user.User;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 
@@ -74,8 +75,12 @@ public class ShopMenu extends Menu {
                         )
                 );
 
-                add(slot, Item.of(effect.getIcon(), "§a" + effect.getName(), lore)
-                        .flags(ItemFlag.values())
+                Item icon = Item.of(effect.getIcon(), "§a" + effect.getName(), lore);
+
+                if (effect.isEnchanted())
+                    icon.enchantment(Enchantment.PROTECTION, 1);
+
+                add(slot, icon.flags(ItemFlag.values())
                         .click(event -> {
 
                             if (!canBuy) {
@@ -92,19 +97,7 @@ public class ShopMenu extends Menu {
                                 return;
                             }
 
-                            close();
-                            sound(MenuSound.ACTION_CONFIRMED);
-
-                            user.setLives(user.getLives() - effect.getPrice());
-                            user.save();
-
-                            getPlayer().sendMessage(
-                                    getMessage("bought-effect")
-                                            .replace("{effect}", effect.getName())
-                                            .replace("{lives}", effect.getPrice() + ConfigAPI.getHeartSymbol())
-                            );
-
-                            effect.apply(getPlayer());
+                            new ConfirmBuyEffectMenu(getPlayer(), effect, this).build();
                         }));
             });
 
@@ -122,7 +115,7 @@ public class ShopMenu extends Menu {
                         }));
             else
                 add(getTotalSlots() - 5, Item.of(Material.ARROW, "§cBack to Store 1",
-                        "§eClick to see.")
+                                "§eClick to see.")
                         .click(event -> {
                             this.id = 1;
 

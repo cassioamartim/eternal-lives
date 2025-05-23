@@ -2,7 +2,6 @@ package br.martim.dev.listener;
 
 import br.martim.dev.Eternal;
 import br.martim.dev.api.config.ConfigAPI;
-import br.martim.dev.api.life.LifeAPI;
 import br.martim.dev.api.user.User;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -50,8 +49,7 @@ public class UserListener implements Listener {
 
             if (messageUponBanishment.length > 0)
                 player.sendMessage(messageUponBanishment);
-        } else
-            LifeAPI.update(player, user.getLives());
+        }
     }
 
     @EventHandler
@@ -72,7 +70,7 @@ public class UserListener implements Listener {
 
             if (user.getLives() <= 0) {
 
-                user.setReturnsAt(System.currentTimeMillis() + TimeUnit.DAYS.toMillis(ConfigAPI.getBannedDays()));
+                user.setReturnsAt(System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(ConfigAPI.getBannedDays()));
 
                 user.save();
 
@@ -86,7 +84,7 @@ public class UserListener implements Listener {
         if (killer != null) {
             User killerUser = Eternal.getUserController().load(killer.getUniqueId());
 
-            if (killerUser != null) {
+            if (killerUser != null && killerUser.getLives() < ConfigAPI.getMaxLife()) {
                 killerUser.setLives(killerUser.getLives() + ConfigAPI.getKillLife());
                 killerUser.save();
 

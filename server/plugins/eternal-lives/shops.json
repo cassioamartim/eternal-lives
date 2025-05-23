@@ -5,13 +5,13 @@
       {
         "name": "Strength I",
         "type": "STRENGTH",
-        "icon": "NETHERITE_CHESTPLATE",
+        "icon": "IRON_SWORD",
         "necessary-life": 3
       },
       {
         "name": "Speed I",
         "type": "SPEED",
-        "icon": "IRON_SWORD",
+        "icon": "LEATHER_BOOTS",
         "necessary-life": 3
       },
       {
@@ -23,13 +23,13 @@
       {
         "name": "Health Boost I",
         "type": "HEALTH_BOOST",
-        "icon": "MACE",
+        "icon": "DIAMOND_CHESTPLATE",
         "necessary-life": 2
       },
       {
         "name": "Hero of the Village II",
         "type": "HERO_OF_THE_VILLAGE",
-        "icon": "DIAMOND_SWORD",
+        "icon": "EMERALD",
         "amplifier": 1,
         "necessary-life": 2
       },
@@ -42,19 +42,19 @@
       {
         "name": "Jump Boost I",
         "type": "JUMP_BOOST",
-        "icon": "TOTEM_OF_UNDYING",
+        "icon": "RABBIT_FOOT",
         "necessary-life": 2
       },
       {
         "name": "Trial Omen I",
         "type": "TRIAL_OMEN",
-        "icon": "COAL",
+        "icon": "OMINOUS_TRIAL_KEY",
         "necessary-life": 2
       },
       {
         "name": "Water Breathing I",
         "type": "WATER_BREATHING",
-        "icon": "ICE",
+        "icon": "TURTLE_HELMET",
         "necessary-life": 1
       }
     ]
@@ -65,21 +65,22 @@
       {
         "name": "Speed II",
         "type": "SPEED",
-        "icon": "IRON_BOOTS",
+        "icon": "LEATHER_BOOTS",
         "amplifier": 1,
+        "enchanted": true,
         "necessary-life": 5
       },
       {
         "name": "Health Boost II",
         "type": "HEALTH_BOOST",
-        "icon": "JUKEBOX",
+        "icon": "NETHERITE_CHESTPLATE",
         "amplifier": 1,
         "necessary-life": 4
       },
       {
         "name": "Hero of the Village IV",
         "type": "HERO_OF_THE_VILLAGE",
-        "icon": "DIAMOND_SWORD",
+        "icon": "EMERALD",
         "amplifier": 3,
         "necessary-life": 4
       },
@@ -88,6 +89,7 @@
         "type": "HASTE",
         "icon": "GOLDEN_PICKAXE",
         "amplifier": 1,
+        "enchanted": true,
         "necessary-life": 4
       }
     ]

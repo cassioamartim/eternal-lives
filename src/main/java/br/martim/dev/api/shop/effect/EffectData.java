@@ -24,6 +24,8 @@ public class EffectData {
 
     private final int amplifier, duration, price;
 
+    private final boolean enchanted;
+
     private final List<String> description;
 
     public EffectData(JsonObject data) {
@@ -41,6 +43,8 @@ public class EffectData {
         this.amplifier = data.has("amplifier") ? data.get("amplifier").getAsInt() : 0;
         this.duration = data.has("duration") ? data.get("duration").getAsInt() : Integer.MAX_VALUE;
 
+        this.enchanted = data.has("enchanted") && data.get("enchanted").getAsBoolean();
+
         this.price = data.has("necessary-life") ? data.get("necessary-life").getAsInt() : 3;
 
         this.description = new ArrayList<>();
@@ -56,9 +60,11 @@ public class EffectData {
 
     public void apply(Player player) {
 
-        PotionEffect effect = new PotionEffect(type, duration, amplifier);
+        PotionEffect effect = new PotionEffect(type,
+                duration == Integer.MAX_VALUE ? PotionEffect.INFINITE_DURATION : duration,
+                amplifier);
 
-        player.addPotionEffect(effect);
+        effect.apply(player);
 
         player.sendMessage(
                 getMessage("applied-effect-target")

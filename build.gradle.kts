@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "br.martim.dev"
-version = "DEV-SNAPSHOT"
+version = "1.0.0-SNAPSHOT"
 
 java {
     toolchain {
@@ -15,8 +15,13 @@ java {
 
 repositories {
     mavenCentral()
+
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     maven("https://repo.codemc.org/repository/maven-public/")
+
+    maven {
+        url = uri("https://repo.extendedclip.com/releases/")
+    }
 }
 
 dependencies {
@@ -26,6 +31,7 @@ dependencies {
     annotationProcessor(lombok)
 
     compileOnly("org.spigotmc:spigot-api:1.21.3-R0.1-SNAPSHOT")
+    compileOnly("me.clip:placeholderapi:2.11.6")
 
     implementation("dev.jorel:commandapi-bukkit-shade:10.0.0")
 }
@@ -39,16 +45,12 @@ bukkit {
 }
 
 tasks.register<Copy>("copyJar") {
-    dependsOn(tasks.shadowJar) // Garante que o jar esteja construído
+    dependsOn(tasks.shadowJar)
 
     val outputJar = tasks.shadowJar.get().archiveFile.get().asFile
 
     from(outputJar)
     into("server/plugins")
-
-    doLast {
-        println("Copiado com sucesso para server/plugins: ${outputJar.name}")
-    }
 }
 
 tasks.shadowJar {

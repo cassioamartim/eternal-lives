@@ -7,9 +7,9 @@ heart-symbol: '❤'
 # This is a suffix that appears after the player's name on the tab and on his head.
 tab-suffix: '&c{life}&4{heart}' # Example: 14❤
 
-# When a player loses all their lives, they are banned for X days.
-# You can change the number of days below.
-banned-days: 10 # 10 days
+# You can configure banishment time in seconds.
+# Example: 10 -> 10 Seconds, 60 -> 1 minute
+banned-days: 864000 # 10 days in seconds
 
 # When a banned player tries to join the server, this message will be shown.
 # Placeholder: {date} - Displays the date when the ban will be lifted.
@@ -31,6 +31,9 @@ message-upon-banishment:
 # When a player joins for the first time, they will receive this initial number of lives.
 initial-life: 10 # 10 lives
 
+# This is the maximum of lives a player can get after that he will not be able to get anymore.
+max-life: 20 # 20 lives
+
 # When killing another player, the killer gains X lives.
 kill-life: 1 # Gains 1 life per kill
 
@@ -39,7 +42,8 @@ died-life: 1 # Loses 1 life per death
 
 # These are the messages that appear in menus, deaths of players and commands.
 messages:
-  applied-effect-target: "&aEffect &6{effect}&a has been applied to you."
+  max-life-reached: "&cThe player {player} reached the life limit"
+  applied-effect-target: "&aEffect &b{effect}&a has been applied to you."
   you-cant-buy-effects: "&cYou can't buy effects."
   you-cant-buy-effect-data: "&cYou don't have enough lives to buy effect."
   bought-effect: "&aYou have bought the &e{effect}&a effect by &c{lives}&a."
