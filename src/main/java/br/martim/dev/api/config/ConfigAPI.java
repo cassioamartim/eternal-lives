@@ -20,8 +20,8 @@ public class ConfigAPI {
 
     }
 
-    public static int getBannedDays() {
-        return config().getInt("banned-days", 86400);
+    public static String getBannedTime() {
+        return config().getString("banned-time", "10d");
     }
 
     public static String getBannedKickMessage(long returnsAt) {

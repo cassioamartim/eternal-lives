@@ -7,9 +7,9 @@ heart-symbol: '❤'
 # This is a suffix that appears after the player's name on the tab and on his head.
 tab-suffix: '&c{life}&4{heart}' # Example: 14❤
 
-# You can configure banishment time in seconds.
-# Example: 10 -> 10 Seconds, 60 -> 1 minute
-banned-days: 864000 # 10 days in seconds
+# You can configure banishment time.
+# Example: Ban for 10 days, 2 hours and 5 minutes -> 10d,2h,5m
+banned-time: 10d # 10 days
 
 # When a banned player tries to join the server, this message will be shown.
 # Placeholder: {date} - Displays the date when the ban will be lifted.

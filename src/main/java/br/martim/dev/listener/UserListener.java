@@ -3,6 +3,7 @@ package br.martim.dev.listener;
 import br.martim.dev.Eternal;
 import br.martim.dev.api.config.ConfigAPI;
 import br.martim.dev.api.user.User;
+import br.martim.dev.util.list.TimeUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -70,7 +71,7 @@ public class UserListener implements Listener {
 
             if (user.getLives() <= 0) {
 
-                user.setReturnsAt(System.currentTimeMillis() + TimeUnit.SECONDS.toMillis(ConfigAPI.getBannedDays()));
+                user.setReturnsAt(TimeUtil.getTime(ConfigAPI.getBannedTime()));
 
                 user.save();
 
