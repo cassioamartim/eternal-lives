@@ -4,5 +4,11 @@
     "lives": 0,
     "returnsAt": 1748910835369,
     "createdAt": 1748029935492
+  },
+  {
+    "id": "4610f790-3c70-4904-b8c4-2a53fa35a4ea",
+    "lives": 10,
+    "returnsAt": -1,
+    "createdAt": 1748227203249
   }
 ]

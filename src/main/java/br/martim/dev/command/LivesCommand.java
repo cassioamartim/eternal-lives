@@ -20,7 +20,7 @@ public class LivesCommand {
 
         new CommandAPICommand("lives")
                 .withPermission(CommandPermission.OP)
-                .withPermission("eternallivees.admin")
+                .withPermission("eternallives.admin")
                 .withSubcommand(
                         new CommandAPICommand("reload")
                                 .executes((sender, args) -> {

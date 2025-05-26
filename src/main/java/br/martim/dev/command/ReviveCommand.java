@@ -16,7 +16,7 @@ public class ReviveCommand {
 
         new CommandAPICommand("revive")
                 .withPermission(CommandPermission.OP)
-                .withPermission("eternallivees.admin")
+                .withPermission("eternallives.admin")
                 .withArguments(new OfflinePlayerArgument("player"))
                 .executes((sender, args) -> {
 
