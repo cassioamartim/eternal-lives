@@ -51,7 +51,7 @@ public class Eternal extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new UserListener(), this);
         getServer().getPluginManager().registerEvents(new MenuListener(), this);
 
-        getServer().getConsoleSender().sendMessage("§aPlugin started successfully. Developed by Cássio Martim.");
+        getLogger().info("EternalLives started successfully. Developed by Cássio Martim.");
     }
 
     @Override
@@ -60,7 +60,7 @@ public class Eternal extends JavaPlugin {
 
         shopController.disable();
 
-        getServer().getConsoleSender().sendMessage("§cPlugin hit successfully. Developed by Cássio Martim.");
+        getLogger().info("EternalLives hit successfully. Developed by Cássio Martim.");
     }
 
     protected void handleCommands() {

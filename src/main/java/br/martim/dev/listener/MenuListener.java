@@ -38,16 +38,16 @@ public class MenuListener implements Listener {
     public void onPlayerClickItem(InventoryClickEvent event) {
         if (event.getWhoClicked() instanceof Player player) {
 
-            if (event.getClickedInventory() == null || event.getCurrentItem() == null) {
-                event.setCancelled(true);
-                return;
-            }
-
-            Inventory inventory = event.getClickedInventory();
-
             Menu menu = MenuController.get(player.getUniqueId());
 
             if (menu != null) {
+
+                if (event.getClickedInventory() == null || event.getCurrentItem() == null) {
+                    event.setCancelled(true);
+                    return;
+                }
+
+                Inventory inventory = event.getClickedInventory();
 
                 if (inventory.equals(player.getInventory())) {
                     event.setCancelled(true);
