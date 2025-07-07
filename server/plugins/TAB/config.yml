@@ -3,7 +3,7 @@ header-footer:
   enabled: true
   header:
     - "<#FFFFFF>&m                                                </#FFFF00>"
-    - "&3&lServer name"
+    - "&3&lLANDS"
     - "&r&7&l>> %animation:Welcome%&3 &l%player%&7&l! &7&l<<"
     - "&r&7Online players: &f%online%"
     - "&6Online staff: &e%staffonline%"
@@ -84,7 +84,7 @@ bossbar:
       style: "PROGRESS" # for 1.9+: PROGRESS, NOTCHED_6, NOTCHED_10, NOTCHED_12, NOTCHED_20
       color: "%animation:barcolors%" # for 1.9+: BLUE, GREEN, PINK, PURPLE, RED, WHITE, YELLOW
       progress: "100" # in %
-      text: "&fWebsite: &bwww.domain.com"
+      text: "&fWebsite: &bwww.landsmc.com"
 
 # https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Scoreboard
 scoreboard:
@@ -99,8 +99,8 @@ scoreboard:
     test:
       title: "<#e30e1c>Eternal Lives</#f0323f>"
       lines:
-        - 'Your life: %eternal_total_life%'
-        - 'Tab suffix: %eternal_heart_suffix%'
+        - 'Sua vida: %eternal_total_life%'
+        - 'Suffixo do tab: %eternal_heart_suffix%'
 
 # https://github.com/NEZNAMY/TAB/wiki/Feature-guide:-Layout
 layout:

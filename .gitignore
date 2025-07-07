@@ -1,3 +1,6 @@
+### SRC Rar
+eternal-lives.rar/
+
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar

@@ -125,11 +125,6 @@ public class MenuListener implements Listener {
     public void onInteractInventory(InventoryCloseEvent event) {
         InventoryView view = event.getView();
 
-        ItemStack cursor = view.getCursor();
-
-        if (cursor != null)
-            view.setCursor(null);
-
         removeMenu(event.getPlayer().getUniqueId());
     }
 
